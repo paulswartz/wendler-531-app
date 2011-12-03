@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>Wendler 5-3-1 Cycle Calculator</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Wendler 5-3-1 Cycle Calculator</h1>
+    <div>
+      <label for="weight">1 Rep Max:</label><input name="weight" id="weight" type="text" value="100">
+    </div>
+    <div>
+      Working 1 Rep Max: <span id="working"></span>
+    </div>
+    <table>
+      <tr>
+        <th>Week 1 (5-5-5+)</th>
+        <th>Week 2 (3-3-3+)</th>
+        <th>Week 3 (5-3-1+)</th>
+        <th>Week 4 (deload)</th>
+      </tr>
+      <tr>
+        <td data-reps="5" data-percent="40"></td>
+        <td data-reps="5" data-percent="40"></td>
+        <td data-reps="5" data-percent="40"></td>
+        <td data-reps="5" data-percent="40"></td>        
+      </tr>
+      <tr>
+        <td data-reps="5" data-percent="50"></td>
+        <td data-reps="5" data-percent="50"></td>
+        <td data-reps="5" data-percent="50"></td>
+        <td data-reps="5" data-percent="50"></td>
+      </tr>
+      <tr>
+        <td data-reps="3" data-percent="40"></td>
+        <td data-reps="3" data-percent="40"></td>
+        <td data-reps="3" data-percent="40"></td>
+        <td data-reps="5" data-percent="40"></td>
+      </tr>
+      <tr>
+        <td data-reps="5" data-percent="65"></td>
+        <td data-reps="3" data-percent="70"></td>
+        <td data-reps="5" data-percent="75"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td data-reps="5" data-percent="75"></td>
+        <td data-reps="3" data-percent="80"></td>
+        <td data-reps="3" data-percent="85"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="final" data-reps="5+" data-percent="85"></td>
+        <td class="final" data-reps="3+" data-percent="90"></td>
+        <td class="final" data-reps="1+" data-percent="95"></td>
+        <td></td>
+      </tr>
+    </table>
+  </body>
+  <script type="text/javascript">
+    function recalculate() {
+        max = parseInt($("#weight").val());
+        working = parseInt(max * 0.9);
+        $("#working").text(working);
+        $("td[data-percent]").each(function(index) {
+            elm = $(this);
+            percent = parseInt(elm.attr('data-percent'));
+            reps = elm.attr('data-reps');
+            weight = parseInt(working * percent * 0.01);
+            elm.text(weight + "x" + reps);
+        });
+        location.hash = "#" + max;
+    }
+    $("#weight").change(recalculate);
+    if (parseInt(location.hash.slice(1))) {
+       $("#weight").val(location.hash.slice(1));
+    }
+    recalculate();
+  </script>
+</html>
+    

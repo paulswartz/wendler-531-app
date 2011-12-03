@@ -2,15 +2,36 @@
   <head>
     <title>Wendler 5-3-1 Cycle Calculator</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <style type="text/css">
+      body > div {
+        padding: 10px;
+      }
+      #working {
+        font-weight: bold;
+      }
+      td, th {
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
     <h1>Wendler 5-3-1 Cycle Calculator</h1>
+    <h2>How to use</h2>
     <div>
-      <label for="weight">1 Rep Max:</label><input name="weight" id="weight" type="text" value="100">
+      Enter your weight in the form below.  The page will update with the weights and reps you'll do to keep up with the Wendler 5/3/1 cycle.
     </div>
+    <h2>Setup</h2>
     <div>
-      Working 1 Rep Max: <span id="working"></span>
+      <label for="weight">1-Rep Max:</label> <input name="weight" id="weight" type="text" value="100"> <input type="submit" value="Calculate">
+      </div>
+    <div>
+      <input checked name="rounding" id="rounding" type="checkbox"><label for="rounding">Round down to nearest multiple of 5?</label>
     </div>
+    <h2>Working 1-Rep Max</h2>
+    <div>
+      All of your work for this cycle is based off a working 1-rep max of <span id="working"></span> pounds.
+    </div>
+    <h2>Schedule</h2>
     <table>
       <tr>
         <th>Week 1 (5-5-5+)</th>
@@ -57,6 +78,22 @@
     </table>
   </body>
   <script type="text/javascript">
+    function round(val) {
+        if (!$("#rounding").prop('checked')) {
+            return val;
+        } else {
+            return Math.floor(val / 5) * 5;
+        }
+    }
+    function getHash() {
+        max = parseInt($("#weight").val());
+        checked = $("#rounding").prop("checked");
+        if (!checked) {
+            return '#a' + max;
+        } else {
+            return '#' + max;
+        }
+    }
     function recalculate() {
         max = parseInt($("#weight").val());
         working = parseInt(max * 0.9);
@@ -65,14 +102,20 @@
             elm = $(this);
             percent = parseInt(elm.attr('data-percent'));
             reps = elm.attr('data-reps');
-            weight = parseInt(working * percent * 0.01);
-            elm.text(weight + "x" + reps);
+            weight = round(parseInt(working * percent * 0.01));
+            elm.text(weight + "#, " + reps + " reps");
         });
-        location.hash = "#" + max;
+        location.hash = getHash();
     }
     $("#weight").change(recalculate);
-    if (parseInt(location.hash.slice(1))) {
-       $("#weight").val(location.hash.slice(1));
+    $("#rounding").change(recalculate);
+    var start = 1;
+    if (location.hash.slice(1, 2) === "a") {
+        $("#rounding").prop("checked", false);
+        start = 2;
+    }
+    if (parseInt(location.hash.slice(start))) {
+        $("#weight").val(location.hash.slice(start));
     }
     recalculate();
   </script>

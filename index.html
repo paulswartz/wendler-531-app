@@ -2,82 +2,117 @@
   <head>
     <title>Wendler 5-3-1 Cycle Calculator</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
     <style type="text/css">
-      body > div {
-        padding: 10px;
+      section {
+        padding-top: 40px;
+        /*padding-right: 20px;*/
       }
-      #working {
-        font-weight: bold;
+      label {
+        text-align: left;
+        width: auto;
       }
-      td, th {
-        padding: 10px;
+      input {
+        margin: 0 10px;
+      }
+      input + span {
+        margin-left: 10px;
+      }
+      .container-fluid {
+        min-width: 0;
+      }
+      .container-fluid > .content {
+        margin-left: 20px;
+      }
+      body {
+        padding-top: 20px;
       }
     </style>
   </head>
   <body>
-    <h1>Wendler 5-3-1 Cycle Calculator</h1>
-    <h2>How to use</h2>
-    <div>
-      Enter your weight in the form below.  The page will update with the weights and reps you'll do to keep up with the Wendler 5/3/1 cycle.
-    </div>
-    <h2>Setup</h2>
-    <div>
-      <label for="weight">1-Rep Max:</label> <input name="weight" id="weight" type="text" value="100"> <input type="submit" value="Calculate">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+        <a class="brand" href="">Wendler 5-3-1 Cycle Calculator</a>
+        </div>
       </div>
-    <div>
-      <input checked name="rounding" id="rounding" type="checkbox"><label for="rounding">Round down to nearest multiple of 5?</label>
     </div>
-    <h2>Working 1-Rep Max</h2>
-    <div>
-      All of your work for this cycle is based off a working 1-rep max of <span id="working"></span> pounds.
+    <div class="container-fluid">
+      <div class="content">
+    <section>
+      <h2 class="row">How to use</h2>
+      <div class="row">
+        Enter your weight in the form below.  The page will update with the weights and reps you'll do to keep up with the Wendler 5/3/1 cycle.
+      </div>
+    </section>
+    <section>
+      <h2 class="row">Setup</h2>
+      <div class="row">
+        <label for="weight">1-Rep Max:</label> <input name="weight" id="weight" type="text" value="100"> <button class="btn primary">Calculate</button>
+      </div>
+      <div class="row">
+        <input style="padding-left: 40px;" checked name="rounding" id="rounding" type="checkbox"><span>Round down to nearest multiple of 5?</span>
+      </div>
+    </section>
+    <section>
+      <h2 class="row">Working 1-Rep Max</h2>
+      <div class="row">
+        All of your work for this cycle is based off a working 1-rep max of <strong><span id="working"></span></strong> pounds.
+      </div>
+    </section>
+    <section>
+      <h2 class="row">Schedule</h2>
+      <table class="zebra-striped bordered-table row">
+        <tr>
+          <th>Week 1 (5-5-5+)</th>
+          <th>Week 2 (3-3-3+)</th>
+          <th>Week 3 (5-3-1+)</th>
+          <th>Week 4 (deload)</th>
+        </tr>
+        <tr>
+          <td data-reps="5" data-percent="40"></td>
+          <td data-reps="5" data-percent="40"></td>
+          <td data-reps="5" data-percent="40"></td>
+          <td data-reps="5" data-percent="40"></td>        
+        </tr>
+        <tr>
+          <td data-reps="5" data-percent="50"></td>
+          <td data-reps="5" data-percent="50"></td>
+          <td data-reps="5" data-percent="50"></td>
+          <td data-reps="5" data-percent="50"></td>
+        </tr>
+        <tr>
+          <td data-reps="3" data-percent="40"></td>
+          <td data-reps="3" data-percent="40"></td>
+          <td data-reps="3" data-percent="40"></td>
+          <td data-reps="5" data-percent="40"></td>
+        </tr>
+        <tr>
+          <td data-reps="5" data-percent="65"></td>
+          <td data-reps="3" data-percent="70"></td>
+          <td data-reps="5" data-percent="75"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td data-reps="5" data-percent="75"></td>
+          <td data-reps="3" data-percent="80"></td>
+          <td data-reps="3" data-percent="85"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="final" data-reps="5+" data-percent="85"></td>
+          <td class="final" data-reps="3+" data-percent="90"></td>
+          <td class="final" data-reps="1+" data-percent="95"></td>
+          <td></td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h2 class="row">About</h2>
+      <span class="row">This page was put together by <a href="http://paulswartz.net">Paul Swartz</a>.  You can find him on Twitter <a href="http://www.twitter.com/paulswartz">@paulswartz</a>.  Source code available at <a href="https://github.com/paulswartz/wendler-531-app">Github</a>.</span>
+    </section>
     </div>
-    <h2>Schedule</h2>
-    <table>
-      <tr>
-        <th>Week 1 (5-5-5+)</th>
-        <th>Week 2 (3-3-3+)</th>
-        <th>Week 3 (5-3-1+)</th>
-        <th>Week 4 (deload)</th>
-      </tr>
-      <tr>
-        <td data-reps="5" data-percent="40"></td>
-        <td data-reps="5" data-percent="40"></td>
-        <td data-reps="5" data-percent="40"></td>
-        <td data-reps="5" data-percent="40"></td>        
-      </tr>
-      <tr>
-        <td data-reps="5" data-percent="50"></td>
-        <td data-reps="5" data-percent="50"></td>
-        <td data-reps="5" data-percent="50"></td>
-        <td data-reps="5" data-percent="50"></td>
-      </tr>
-      <tr>
-        <td data-reps="3" data-percent="40"></td>
-        <td data-reps="3" data-percent="40"></td>
-        <td data-reps="3" data-percent="40"></td>
-        <td data-reps="5" data-percent="40"></td>
-      </tr>
-      <tr>
-        <td data-reps="5" data-percent="65"></td>
-        <td data-reps="3" data-percent="70"></td>
-        <td data-reps="5" data-percent="75"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td data-reps="5" data-percent="75"></td>
-        <td data-reps="3" data-percent="80"></td>
-        <td data-reps="3" data-percent="85"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td class="final" data-reps="5+" data-percent="85"></td>
-        <td class="final" data-reps="3+" data-percent="90"></td>
-        <td class="final" data-reps="1+" data-percent="95"></td>
-        <td></td>
-      </tr>
-    </table>
-    <h2>About</h2>
-    This page was put together by <a href="http://paulswartz.net">Paul Swartz</a>.  You can find him on Twitter <a href="http://www.twitter.com/paulswartz">@paulswartz</a>.  Source code available at <a href="https://github.com/paulswartz/wendler-531-app">Github</a>.
+      </div>
   </body>
   <script type="text/javascript">
     function round(val) {

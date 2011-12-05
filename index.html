@@ -133,14 +133,14 @@
     }
     function recalculate() {
         max = parseInt($("#weight").val());
-        working = parseInt(max * 0.9);
-        $("#working").text(working);
+        workingmax = parseInt(max * 0.9);
+        $("#working").text(workingmax);
         $("td[data-percent]").each(function(index) {
             elm = $(this);
             percent = parseInt(elm.attr('data-percent'));
             reps = elm.attr('data-reps');
-            weight = round(parseInt(working * percent * 0.01));
-            elm.text(weight + "#, " + reps + " reps");
+            w = round(parseInt(workingmax * percent * 0.01));
+            elm.text(w + "#, " + reps + " reps");
         });
         location.hash = getHash();
     }

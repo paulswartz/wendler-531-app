@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# created 2011-12-18 12:01
+CACHE:
+
+# pages
+/
+
+# JS
+http://code.jquery.com/jquery.min.js
+
+# images
+
+# CSS
+http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css
+
+NETWORK:
+http://www.google-analytics.com/ga.js
+https://ssl.google-analytics.com/ga.js
+*

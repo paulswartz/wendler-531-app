@@ -15,6 +15,18 @@
       }
       table {
         width: 100%;
+        margin-bottom: 0;
+      }
+      @media (max-width: 768px) {
+        section {
+          padding-top: 5px;
+        }
+        body {
+          padding-top: 0;
+        }
+        .hide-small, h2 {
+          display: none;
+        }
       }
     </style>
     <script type="text/javascript">
@@ -41,7 +53,7 @@
           </div>
         </div>
       </div>
-      <section>
+      <section class="hide-small">
         <h2 class="row">How to use</h2>
         <div class="row">
           Enter your weight in the form below.  The page will update with the weights and reps you'll do to keep up with the Wendler 5/3/1 cycle.
@@ -49,11 +61,17 @@
       </section>
       <section>
         <h2 class="row">Setup</h2>
-        <div class="row">
-          <label for="weight">1-Rep Max:</label> <input name="weight" id="weight" type="text" value="100"> <button class="btn btn-primary">Calculate</button>
-        </div>
-        <div class="row">
-          <input style="padding-left: 40px;" checked name="rounding" id="rounding" type="checkbox"><span>Round down to nearest multiple of 5?</span>
+        <div class="form-inline">
+          <div class="controls">
+            <label for="weight">1-Rep Max:</label>
+            <input name="weight" id="weight" type="text" value="100">
+            <button class="btn btn-primary">Calculate</button>
+            </div>
+          <div class="controls">
+            <label class="checkbox">
+              <input checked name="rounding" id="rounding" type="checkbox"><span>Round down to nearest multiple of 5?</span>
+              </label>
+          </div>
         </div>
       </section>
       <section>

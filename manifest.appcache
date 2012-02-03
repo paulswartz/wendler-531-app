@@ -11,7 +11,8 @@ http://code.jquery.com/jquery.min.js
 # images
 
 # CSS
-http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css
+bootstrap.min.css
+bootstrap-responsive.min.css
 
 NETWORK:
 *

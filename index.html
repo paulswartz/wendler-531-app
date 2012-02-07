@@ -18,6 +18,9 @@
         width: 100%;
         margin-bottom: 0;
       }
+      .show-small {
+        display: none;
+      }
       @media (max-width: 768px) {
         .navbar-fixed-top {
           margin-bottom: 5px;
@@ -32,12 +35,33 @@
           padding-top: 0;
         }
         .hide-small, h2 {
-          display: none;
+          display: none !important;
+        }
+        .show-small {
+          display: inline !important;
         }
       }
       @media (max-width: 480px) {
+        .navbar-fixed-top {
+          position: fixed;
+        }
+        #calculator {
+          margin-left: -20px;
+          padding-left: 20px;
+          position: fixed;
+          bottom: 0;
+          background: #333;
+          width: 100%;
+        }
+        #calculator .btn {
+          margin-left: 20px;
+        }
+        #calculator + section{
+          padding-top: 50px;
+        }
         #weight {
           margin-bottom: 5px;
+          float: left;
         }
       }
     </style>
@@ -71,15 +95,15 @@
           Enter your weight in the form below.  The page will update with the weights and reps you'll do to keep up with the Wendler 5/3/1 cycle.
         </div>
       </section>
-      <section>
+      <section id="calculator">
         <h2 class="row">Setup</h2>
         <div class="form-inline">
           <div class="controls">
-            <label for="weight">1-Rep Max:</label>
+            <label for="weight" class="hide-small">1-Rep Max:</label>
             <input name="weight" id="weight" type="text" size="5" value="100">
-            <button class="btn btn-primary">Calculate</button>
+            <button class="btn btn-primary"><span class="hide-small">Calculate</span><span class="show-small">&#x2713;</span></button>
             </div>
-          <div class="controls">
+          <div class="controls hide-small">
             <label class="checkbox">
               <input checked name="rounding" id="rounding" type="checkbox"><span>Round down to nearest multiple of 5?</span>
               </label>
@@ -171,7 +195,7 @@
             percent = parseInt(elm.attr('data-percent'));
             reps = elm.attr('data-reps');
             w = round(parseInt(workingmax * percent * 0.01));
-            elm.text(w + "#, " + reps + " reps");
+            elm.html(w + "#<span class='hide-small'>, </span><span class='show-small'>x</span>" + reps + "<span class='hide-small'> reps</span>");
         });
         location.hash = getHash();
     }

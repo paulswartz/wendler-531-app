@@ -52,6 +52,7 @@
           bottom: 0;
           background: #333;
           width: 100%;
+          height: 32px;
         }
         #calculator .btn {
           margin-left: 20px;
@@ -62,6 +63,9 @@
         #weight {
           margin-bottom: 5px;
           float: left;
+        }
+        #about {
+          padding-bottom: 40px;
         }
       }
     </style>
@@ -163,9 +167,9 @@
           </tr>
         </table>
       </section>
-      <section>
+      <section id="about">
         <h2 class="row">About</h2>
-        <span class="row">This page was put together by <a href="http://paulswartz.net">Paul Swartz</a>.  You can find him on Twitter <a href="http://www.twitter.com/paulswartz">@paulswartz</a>.  Source code available at <a href="https://github.com/paulswartz/wendler-531-app">Github</a>.</span>
+        <span class="row">This page was put together by <a href="http://paulswartz.net">Paul Swartz</a>.  You can find him on Twitter <a href="http://www.twitter.com/paulswartz">@paulswartz</a>.<span class="hide-small"  Source code available at <a href="https://github.com/paulswartz/wendler-531-app">Github</a>.</span></span>
       </section>
     </div>
   </body>
@@ -210,9 +214,10 @@
         $("#weight").val(location.hash.slice(start));
     }
     recalculate();
-    /mobile/i.test(navigator.userAgent) && setTimeout(function () {
+/*    /mobile/i.test(navigator.userAgent) && setTimeout(function () {
         window.scrollTo(0, 1);
-    }, 1000);
+    }, 1000);*/
+
   </script>
 </html>
     

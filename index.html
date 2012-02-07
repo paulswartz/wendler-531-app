@@ -3,7 +3,7 @@
   <head>
     <title>Wendler 5-3-1 Cycle Calculator</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap-responsive.min.css">
     <style type="text/css">
@@ -19,6 +19,12 @@
         margin-bottom: 0;
       }
       @media (max-width: 768px) {
+        .navbar-fixed-top {
+          margin-bottom: 5px;
+        }
+        .navbar-inner {
+          padding: 0 0 0 5px !important;
+        }
         section {
           padding-top: 5px;
         }
@@ -27,6 +33,11 @@
         }
         .hide-small, h2 {
           display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        #weight {
+          margin-bottom: 5px;
         }
       }
     </style>
@@ -50,7 +61,7 @@
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
-            <a class="brand" href="">Wendler 5-3-1 Cycle Calculator</a>
+            <a class="brand" href="">Wendler <span class="hide-small">5-3-1 Cycle </span>Calculator</a>
           </div>
         </div>
       </div>
@@ -65,7 +76,7 @@
         <div class="form-inline">
           <div class="controls">
             <label for="weight">1-Rep Max:</label>
-            <input name="weight" id="weight" type="text" value="100">
+            <input name="weight" id="weight" type="text" size="5" value="100">
             <button class="btn btn-primary">Calculate</button>
             </div>
           <div class="controls">
@@ -175,6 +186,9 @@
         $("#weight").val(location.hash.slice(start));
     }
     recalculate();
+    /mobile/i.test(navigator.userAgent) && setTimeout(function () {
+        window.scrollTo(0, 1);
+    }, 1000);
   </script>
 </html>
     

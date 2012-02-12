@@ -215,11 +215,11 @@
         if (parseInt(location.hash.slice(start))) {
             $("#weight").val(location.hash.slice(start));
         }
+        recalculate();
     }
     $("#weight").change(recalculate);
     $("#rounding").change(recalculate);
     handleHash();
-    recalculate();
     window.onhashchange = function () {
         if (location.hash != getHash()) {
             handleHash();
